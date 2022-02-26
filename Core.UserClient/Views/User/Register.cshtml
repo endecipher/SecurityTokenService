@@ -1,0 +1,43 @@
+﻿@model UserRegisterModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="panel-body help-block">
+    Please Register yourself in Core.UserClient.
+</div>
+@foreach (var errorMessage in Model.Errors)
+{
+    <br /><span class="alert-danger">@errorMessage</span>
+}
+<hr />
+<div class="container">
+    <form asp-controller="User" asp-action="Register" method="post" class="panel-body">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="ReturnUrl" />
+        <div class="form-group" style="width: fit-content;">
+            @Html.TextBoxFor((model) => model.Username, new { @placeholder = "User Name", @class = "form-control" })
+            @Html.ValidationMessageFor((model) => model.Username)
+        </div>
+        <div class="form-group" style="width: fit-content;">
+            <label>Security Level <span id="levelNumber" class="badge"></span></label>
+            <input type="range" id="secLevelRange" asp-for="SecurityLevel" min="0" max="10" oninput="document.getElementById('levelNumber').innerHTML = this.value" />
+            @Html.ValidationMessageFor((model) => model.SecurityLevel)
+        </div>
+        <div class="form-group" style="width: fit-content;">
+            @Html.Label("Date Of Birth")
+            <br />
+            <input type="date" asp-for="DateOfBirth" name="dateOfBirth" value="@DateTime.Now.Date" />
+            @Html.ValidationMessageFor((model) => model.DateOfBirth)
+        </div>
+        <div class="form-group" style="width: fit-content;">
+            @Html.PasswordFor((model) => model.Password, new { @placeholder = "Password", @class = "form-control" })
+            @Html.ValidationMessageFor((model) => model.Password)
+        </div>
+        <div class="form-group" style="width: fit-content;">
+            @Html.PasswordFor((model) => model.ConfirmPassword, new { @placeholder = "Confirm Password", @class = "form-control" })
+            @Html.ValidationMessageFor((model) => model.ConfirmPassword)
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,16 @@
+﻿@{
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "_LayoutAccess";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+    /*
+    Code in ViewStart is executed before the code in an individual view
+    Move the common Code such as Setting the Layout Property to ViewStart
+    Viewstart reduces Code Redundancy (DRY) and improves maintainability
+    And it's hierarchiclly overriding withing folder subtree as we move out.
+    */
+}

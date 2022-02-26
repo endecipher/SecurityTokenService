@@ -1,0 +1,30 @@
+﻿@model Core.Access.Models.ClientModel
+
+<div class="panel-body help-block">
+    Please Register Client in Core.Access.
+    <br /> You will be provided a Client Id and Client Secret on successful registration.
+</div>
+@foreach (var errorMessage in Model.Errors)
+{
+    <br/><span class="alert-danger">@errorMessage</span>
+}
+<hr />
+<form asp-controller="Client" asp-action="Register" method="post" class="panel-body">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="ReturnUrl" />
+    <div class="form-group">
+        @Html.TextBoxFor((model) => model.Name, new { @placeholder = "Client Name", @class = "form-control" })
+        @Html.ValidationMessageFor((model) => model.Name)
+    </div>
+    <div class="form-group">
+        @Html.PasswordFor((model) => model.Password, new { @placeholder = "Password", @class = "form-control" })
+        @Html.ValidationMessageFor((model) => model.Password)
+    </div>
+    <div class="form-group">
+        @Html.PasswordFor((model) => model.ConfirmPassword, new { @placeholder = "Confirm Password", @class = "form-control" })
+        @Html.ValidationMessageFor((model) => model.ConfirmPassword)
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+</form>

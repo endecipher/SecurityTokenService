@@ -1,0 +1,9 @@
+﻿@model MessageModel
+
+@foreach (var errorMessage in Model.Errors)
+{
+    <br /><span class="alert-danger">@errorMessage</span>
+}
+<div class="panel-body">
+    @Model.Message
+</div>

@@ -1,0 +1,10 @@
+C:\Users\Ayan.Choudhury\source\repos\AppSystem\Core.UserClient\obj\Debug\net5.0\Core.ClientApp.csprojAssemblyReference.cache
+C:\Users\Ayan.Choudhury\source\repos\AppSystem\Core.UserClient\obj\Debug\net5.0\Core.ClientApp.Resource.resources
+C:\Users\Ayan.Choudhury\source\repos\AppSystem\Core.UserClient\obj\Debug\net5.0\Core.ClientApp.csproj.GenerateResource.cache
+C:\Users\Ayan.Choudhury\source\repos\AppSystem\Core.UserClient\obj\Debug\net5.0\Core.ClientApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ayan.Choudhury\source\repos\AppSystem\Core.UserClient\obj\Debug\net5.0\Core.ClientApp.AssemblyInfoInputs.cache
+C:\Users\Ayan.Choudhury\source\repos\AppSystem\Core.UserClient\obj\Debug\net5.0\Core.ClientApp.AssemblyInfo.cs
+C:\Users\Ayan.Choudhury\source\repos\AppSystem\Core.UserClient\obj\Debug\net5.0\Core.ClientApp.csproj.CoreCompileInputs.cache
+C:\Users\Ayan.Choudhury\source\repos\AppSystem\Core.UserClient\obj\Debug\net5.0\Core.ClientApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Ayan.Choudhury\source\repos\AppSystem\Core.UserClient\obj\Debug\net5.0\Core.ClientApp.RazorAssemblyInfo.cache
+C:\Users\Ayan.Choudhury\source\repos\AppSystem\Core.UserClient\obj\Debug\net5.0\Core.ClientApp.RazorAssemblyInfo.cs

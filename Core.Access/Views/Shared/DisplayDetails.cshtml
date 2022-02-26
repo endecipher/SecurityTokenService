@@ -1,0 +1,46 @@
+﻿<div class="panel-body help-block">
+    You will be redirected back in <span id="timer" class="text-primary focus">30</span>s.
+    @Html.Hidden("RedirectTo", Url.Action("Index", "Home"))
+</div>
+<hr/>
+@{ 
+        Func<string, Microsoft.AspNetCore.Html.IHtmlContent> fetchHtmlContent = (x) =>
+        {
+            var content = ViewData[x] as string;
+            if (!string.IsNullOrEmpty(content))
+            {
+                return Html.Label($"{x}: {content}");
+            }
+            else
+            {
+                return null;
+            }
+        };
+}
+<div class="jumbotron alert-success">
+    <div style="padding-top: 0.25em">
+        @fetchHtmlContent("Id")
+    </div>
+    <div style="padding-top: 0.25em">
+        @fetchHtmlContent("Secret")
+    </div>
+    <div style="padding-top: 0.25em">
+        @fetchHtmlContent("Info")
+    </div>
+</div>
+<script>
+    var timeInSeconds = 30;
+    var timerId = setInterval(() => {
+        getTime()
+    }, 1000);
+    function getTime() {
+        document.getElementById("timer").innerHTML = timeInSeconds;
+        timeInSeconds -= 1;
+
+        if (timeInSeconds == 0) {
+            clearInterval(timerId);
+            var url = $("#RedirectTo").val();
+            window.location.href = url
+        }
+    }
+</script>

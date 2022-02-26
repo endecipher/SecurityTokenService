@@ -1,0 +1,29 @@
+﻿@model OAuthModel
+
+<div class="panel-body help-block">
+    Hey! <i>@Model.ClientName</i> wants to access your information.
+    <br /> You will be redirected back to @Model.ReturnUrl on successful authorization..
+</div>
+@foreach (var errorMessage in Model.Errors)
+{
+    <br /><span class="alert-danger">@errorMessage</span>
+}
+<hr />
+<form asp-controller="OAuth" asp-action="Authorize" method="post" class="panel-body">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="State" />
+    <input type="hidden" asp-for="ReturnUrl" />
+    <input type="hidden" asp-for="ClientId" />
+    <input type="hidden" asp-for="ClientName" />
+    <div class="form-group">
+        @Html.TextBoxFor((model) => model.Username, new { @placeholder = "User Name", @class = "form-control" })
+        @Html.ValidationMessageFor((model) => model.Username)
+    </div>
+    <div class="form-group">
+        @Html.PasswordFor((model) => model.Password, new { @placeholder = "Password", @class = "form-control" })
+        @Html.ValidationMessageFor((model) => model.Password)
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">Authorize access for @Model.ClientName</button>
+    </div>
+</form>

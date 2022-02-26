@@ -1,0 +1,27 @@
+﻿<div class="panel-body help-block">
+    You will be redirected to our Home page in <span id="timer" class="text-primary focus">30</span>s.
+    @Html.Hidden("RedirectTo", Url.Action("Index", "Home"))
+</div>
+<hr/>
+@{ 
+    var className = ViewData["Message"].ToString().Contains("Error") ? "alert-danger" : "alert-success";
+}
+<div class="jumbotron @className">
+    @ViewData["Message"]! 
+</div>
+<script>
+    var timeInSeconds = 30;
+    var timerId = setInterval(() => {
+        getTime()
+    }, 1000);
+    function getTime() {
+        document.getElementById("timer").innerHTML = timeInSeconds;
+        timeInSeconds -= 1;
+
+        if (timeInSeconds == 0) {
+            clearInterval(timerId);
+            var url = $("#RedirectTo").val();
+            window.location.href = url
+        }
+    }
+</script>

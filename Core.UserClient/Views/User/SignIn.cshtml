@@ -1,0 +1,32 @@
+﻿@model UserLoginModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="panel-body help-block">
+    Sign In to Core.UserClient
+</div>
+@foreach (var errorMessage in Model.Errors)
+{
+    <br /><span class="alert-danger">@errorMessage</span>
+}
+<hr />
+<form asp-controller="User" asp-action="SignIn" method="post" class="panel-body">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="ReturnUrl" />
+    @*Html.Hidden("RedirectTo", Url.Action("Index", "Secret"))*@
+    <div class="form-group" style="width: fit-content;">
+        @Html.TextBoxFor((model) => model.Username, new { @placeholder = "User Name", @class = "form-control" })
+        @Html.ValidationMessageFor((model) => model.Username)
+    </div>
+    <div class="form-group" style="width: fit-content;">
+        @Html.PasswordFor((model) => model.Password, new { @placeholder = "Password", @class = "form-control" })
+        @Html.ValidationMessageFor((model) => model.Password)
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Sign In</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Register", "User")'">Register yourself!</button>
+    </div>
+</form>
+<div class="panel-body">
+    <hr />
+    <button type="submit" class="btn btn-warning" onclick="location.href='@Url.Action("SignInWithOAuth", "User")'">SignIn with Core.Access credentials</button>
+</div>
