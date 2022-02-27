@@ -124,7 +124,7 @@ namespace Core.UserClient {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Client Application is running..
+        ///   Looks up a localized string similar to Core.UserClient Joke Application is running with Client Id as  .
         /// </summary>
         public static string UserClientIndex {
             get {

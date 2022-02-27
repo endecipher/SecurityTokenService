@@ -121,6 +121,6 @@
     <value>Default Authentication made to fail.</value>
   </data>
   <data name="ServerUp" xml:space="preserve">
-    <value>The resource server { Core.ResourceApi } is up.</value>
+    <value>The resource server { Core.ResourceApi } is up. Access /secret for Knock-Knock Jokes!</value>
   </data>
 </root>

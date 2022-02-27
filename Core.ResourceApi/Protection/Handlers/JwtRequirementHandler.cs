@@ -1,7 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.JsonWebTokens;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.ResourceApi.Protection.Handlers
@@ -30,17 +35,20 @@ namespace Core.ResourceApi.Protection.Handlers
             {
                 var accessToken = authHeader.ToString().Split(' ')[1];
 
-                var serverResponse = await _client
+                var claims = JsonConvert.DeserializeObject<Dictionary<string, string>>(Encoding.UTF8.GetString(Convert.FromBase64String(accessToken.Split('.')[1])));
+
+                if (claims.TryGetValue(JwtRegisteredClaimNames.Aud, out string value) && value.StartsWith(string.Format("{0}://{1}", _httpContext.Request.Scheme, _httpContext.Request.Host)))
+                {
+                    var serverResponse = await _client
                     .GetAsync($"{Configuration["TrustedAuthorizationServers:Core.Access:ValidateAccessTokenEndpoint"]}{accessToken}");
 
-                if (serverResponse.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    context.Succeed(requirement);
+                    if (serverResponse.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        context.Succeed(requirement);
+                    }
                 }
-                else
-                {
-                    context.Fail();
-                }
+
+                context.Fail();
             }
         }
     }

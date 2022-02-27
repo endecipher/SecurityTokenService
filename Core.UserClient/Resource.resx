@@ -139,7 +139,7 @@
     <value>Hey! The username is already registered with us!</value>
   </data>
   <data name="UserClientIndex" xml:space="preserve">
-    <value>User Client Application is running.</value>
+    <value>Core.UserClient Joke Application is running with Client Id as  </value>
   </data>
   <data name="UserNotRegistered" xml:space="preserve">
     <value>User is not registered with Core.UserClient</value>

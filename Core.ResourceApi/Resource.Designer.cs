@@ -70,7 +70,7 @@ namespace Core.ResourceApi {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The resource server { Core.ResourceApi } is up..
+        ///   Looks up a localized string similar to The resource server { Core.ResourceApi } is up. Access /secret for Knock-Knock Jokes!.
         /// </summary>
         public static string ServerUp {
             get {
